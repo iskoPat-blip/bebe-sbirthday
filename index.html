@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Bebe ♡</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #fff0f3, #f9dce5, #fff5f0);
+    font-family: Georgia, serif;
+    overflow: hidden;
+    color: #804b60;
+}
+
+.container {
+    text-align: center;
+    padding: 25px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.small-text {
+    font-size: 13px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+    color: #b17a91;
+}
+
+.envelope {
+    position: relative;
+    width: 280px;
+    height: 180px;
+    margin: 30px auto;
+    background: #f7cbd8;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 15px 35px rgba(150, 80, 110, 0.2);
+    transition: transform 0.3s;
+}
+
+.envelope:hover {
+    transform: translateY(-5px);
+}
+
+.envelope::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-left: 140px solid transparent;
+    border-right: 140px solid transparent;
+    border-top: 105px solid #e9aabd;
+    z-index: 2;
+}
+
+.envelope::after {
+    content: "♥";
+    position: absolute;
+    top: 72px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 35px;
+    color: #fff5f7;
+    z-index: 3;
+}
+
+.envelope-text {
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+button {
+    margin-top: 25px;
+    border: none;
+    padding: 13px 28px;
+    background: #c77996;
+    color: white;
+    border-radius: 30px;
+    font-family: inherit;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #aa5e7d;
+    transform: scale(1.05);
+}
+
+#birthday {
+    display: none;
+    animation: fadeIn 1.5s ease;
+}
+
+#birthday h1 {
+    font-size: 38px;
+    margin-bottom: 20px;
+    color: #b45d7b;
+}
+
+.flower {
+    font-size: 75px;
+    margin: 20px 0;
+    animation: float 3s ease-in-out infinite;
+}
+
+.message {
+    font-size: 17px;
+    line-height: 1.9;
+    margin: 20px auto;
+}
+
+.heart {
+    font-size: 25px;
+    animation: pulse 1.5s infinite;
+}
+
+.petal {
+    position: fixed;
+    top: -20px;
+    pointer-events: none;
+    animation: fall linear forwards;
+    z-index: 10;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.footer {
+    margin-top: 35px;
+    font-size: 13px;
+    opacity: 0.8;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container" id="welcome">
+
+    <p class="small-text">A little something for you</p>
+
+    <div class="envelope" onclick="openGift()"></div>
+
+    <p class="envelope-text">For my favorite person ♡</p>
+
+    <button onclick="openGift()">Open your letter</button>
+
+</div>
+
+<div class="container" id="birthday">
+
+    <p class="small-text">Today is all about you</p>
+
+    <h1>Happy Birthday,<br>My Bebe! ♡</h1>
+
+    <div class="flower">💐</div>
+
+    <div class="message">
+        Happy birthday to the most special person in my life.
+        <br><br>
+        Even if distance separates us, my love will always find its way to you.
+        <br><br>
+        I wish I could be beside you today, holding your hand,
+        giving you flowers, and celebrating every little thing that makes you you.
+        <br><br>
+        Until that day comes, here's a little piece of my heart
+        made especially for you.
+    </div>
+
+    <div class="heart">❤️</div>
+
+    <p class="footer">
+        Made with love, just for you.
+    </p>
+
+</div>
+
+<script>
+
+function openGift() {
+    document.getElementById("welcome").style.display = "none";
+    document.getElementById("birthday").style.display = "block";
+    createPetals();
+}
+
+function createPetals() {
+    setInterval(() => {
+        const petal = document.createElement("div");
+        petal.className = "petal";
+
+        const flowers = ["🌸", "🌷", "💕", "✿"];
+
+        petal.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
+        petal.style.left = Math.random() * 100 + "vw";
+        petal.style.fontSize = (Math.random() * 15 + 15) + "px";
+        petal.style.animationDuration = (Math.random() * 4 + 4) + "s";
+
+        document.body.appendChild(petal);
+
+        setTimeout(() => petal.remove(), 8000);
+    }, 400);
+}
+
+</script>
+
+</body>
+</html>
