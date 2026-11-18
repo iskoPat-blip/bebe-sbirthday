@@ -2,513 +2,357 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Baby ♡</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+    <title>For My Bebe ♡</title>
+    <meta name="description" content="A little birthday surprise made with love.">
 
-body {
-  font-family: Georgia, serif;
-  background: #fff7f8;
-  color: #744b57;
-  overflow-x: hidden;
-}
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 
-button {
-  cursor: pointer;
-  font-family: inherit;
-}
-
-/* ENVELOPE SCREEN */
-
-#welcome {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 25px;
-  text-align: center;
-  background: linear-gradient(135deg, #fff0f4, #ffe3eb, #fff8f5);
-}
-
-#welcome h1 {
-  font-size: 2rem;
-  margin-bottom: 15px;
-  font-weight: normal;
-}
-
-#welcome p {
-  margin-bottom: 30px;
-  color: #a27a87;
-}
-
-.envelope {
-  position: relative;
-  width: 250px;
-  height: 170px;
-  background: #e9a8ba;
-  border-radius: 5px;
-  cursor: pointer;
-  box-shadow: 0 15px 35px rgba(180, 100, 130, 0.2);
-  transition: transform 0.3s;
-}
-
-.envelope:hover {
-  transform: translateY(-8px);
-}
-
-.envelope::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  border-left: 125px solid transparent;
-  border-right: 125px solid transparent;
-  border-top: 100px solid #f4c4d2;
-  z-index: 2;
-}
-
-.envelope::after {
-  content: "♡";
-  position: absolute;
-  top: 65px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 40px;
-  color: white;
-  z-index: 3;
-}
-
-.open-button {
-  margin-top: 30px;
-  padding: 13px 28px;
-  background: #c87996;
-  color: white;
-  border: none;
-  border-radius: 30px;
-  font-size: 15px;
-  transition: 0.3s;
-}
-
-.open-button:hover {
-  background: #ae5d7b;
-  transform: scale(1.05);
-}
-
-/* MAIN BIRTHDAY PAGE */
-
-#birthday {
-  display: none;
-  animation: fadeIn 1.2s ease;
-}
-
-section {
-  padding: 75px 20px;
-  text-align: center;
-}
-
-.hero {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(135deg, #fff0f4, #ffe2eb, #fff9f4);
-}
-
-.small-title {
-  text-transform: uppercase;
-  letter-spacing: 4px;
-  font-size: 12px;
-  color: #b77b91;
-  margin-bottom: 20px;
-}
-
-.hero h1 {
-  font-size: clamp(2.5rem, 8vw, 4rem);
-  font-weight: normal;
-  color: #a85d7c;
-  margin-bottom: 20px;
-}
-
-.hero p {
-  max-width: 500px;
-  line-height: 1.8;
-  color: #98717f;
-}
-
-.flowers {
-  font-size: 65px;
-  margin: 25px 0;
-  animation: float 3s ease-in-out infinite;
-}
-
-.section-title {
-  font-size: 2rem;
-  font-weight: normal;
-  color: #b66d89;
-  margin-bottom: 25px;
-}
-
-/* MUSIC */
-
-.music-section {
-  background: #fffaf8;
-}
-
-.music-card {
-  background: #fff0f4;
-  border: 1px solid #f2d5df;
-  padding: 25px;
-  border-radius: 20px;
-  max-width: 450px;
-  margin: auto;
-}
-
-.music-card p {
-  margin-bottom: 15px;
-}
-
-.music-button {
-  padding: 12px 25px;
-  border: none;
-  border-radius: 30px;
-  background: #c87996;
-  color: white;
-}
-
-/* PHOTO SECTION */
-
-.gallery {
-  background: #fff1f5;
-}
-
-.photo-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-  max-width: 700px;
-  margin: 30px auto;
-}
-
-.photo-placeholder {
-  min-height: 220px;
-  border-radius: 18px;
-  background: linear-gradient(135deg, #f8dce6, #f5bfcf);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 40px;
-  box-shadow: 0 8px 20px rgba(180, 100, 130, 0.08);
-  overflow: hidden;
-}
-
-.photo-placeholder img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* LETTER */
-
-.letter-section {
-  background: #fffaf8;
-}
-
-.letter {
-  max-width: 650px;
-  margin: auto;
-  padding: 35px 30px;
-  background: white;
-  border-radius: 20px;
-  box-shadow: 0 10px 35px rgba(180, 100, 130, 0.08);
-  line-height: 2;
-  text-align: left;
-}
-
-.letter h2 {
-  text-align: center;
-  font-weight: normal;
-  color: #b66d89;
-  margin-bottom: 25px;
-}
-
-.letter p {
-  margin-bottom: 20px;
-}
-
-.signature {
-  text-align: right;
-  color: #b66d89;
-  margin-top: 25px;
-}
-
-/* FOOTER */
-
-footer {
-  padding: 40px 20px;
-  text-align: center;
-  background: #f7dfe7;
-  color: #a36f82;
-}
-
-/* FLOWER PETALS */
-
-.petal {
-  position: fixed;
-  top: -30px;
-  z-index: 5;
-  pointer-events: none;
-  animation: fall linear forwards;
-}
-
-@keyframes fall {
-  to {
-    transform: translateY(110vh) rotate(360deg);
-    opacity: 0;
-  }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-/* MOBILE */
-
-@media (max-width: 600px) {
-  section {
-    padding: 55px 18px;
-  }
-
-  .photo-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .photo-placeholder {
-    min-height: 300px;
-  }
-
-  .letter {
-    padding: 25px 20px;
-  }
-
-  #welcome h1 {
-    font-size: 1.7rem;
-  }
-}
-</style>
+    <!-- Our CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- FIRST SCREEN: ENVELOPE -->
+    <!-- FLOATING DECORATIONS -->
+    <div class="petals-container" id="petals-container"></div>
 
-<div id="welcome">
-  <p class="small-title">A little surprise for you</p>
-  <h1>For my favorite person ♡</h1>
-  <p>There's something waiting for you...</p>
+    <!-- ============================= -->
+    <!-- 1. OPENING ENVELOPE SCREEN  -->
+    <!-- ============================= -->
 
-  <div class="envelope" onclick="openGift()"></div>
+    <main id="intro-screen" class="intro-screen">
 
-  <button class="open-button" onclick="openGift()">
-    Open your letter ♡
-  </button>
-</div>
+        <div class="intro-content">
 
-<!-- BIRTHDAY PAGE -->
+            <p class="eyebrow">A LITTLE SOMETHING FOR YOU</p>
 
-<div id="birthday">
+            <h1>To my favorite<br>person in the world</h1>
 
-  <!-- BIRTHDAY GREETING -->
+            <p class="intro-subtitle">
+                I've made something just for you.
+            </p>
 
-  <section class="hero">
-    <p class="small-title">To the love of my life</p>
+            <div class="envelope-wrapper" id="envelope-wrapper">
 
-    <div class="flowers">🌷🌸🌷</div>
+                <div class="envelope" id="envelope">
 
-    <h1>Happy Birthday, My Love ♡</h1>
+                    <div class="envelope-back"></div>
 
-    <p>
-      Today is all about celebrating the beautiful person
-      you are and how lucky I am to have you in my life.
-    </p>
+                    <div class="letter-preview">
+                        <span>For my bebe ♡</span>
+                    </div>
 
-    <div class="flowers">💗</div>
-  </section>
+                    <div class="envelope-flap"></div>
 
-  <!-- MUSIC -->
+                    <div class="envelope-front"></div>
 
-  <section class="music-section">
-    <p class="small-title">A song for you</p>
-    <h2 class="section-title">Press play, my love ♡</h2>
+                    <div class="envelope-seal">
+                        ♡
+                    </div>
 
-    <div class="music-card">
-      <p>🎵 Something that reminds me of you</p>
+                </div>
 
-      <button class="music-button" onclick="toggleMusic()">
-        ▶ Play Music
-      </button>
+            </div>
 
-      <audio id="music" loop>
-        <source src="assets/song.mp3" type="audio/mpeg">
-      </audio>
+            <button class="open-envelope-button" id="open-envelope">
+                Open your letter <span>♡</span>
+            </button>
+
+            <p class="intro-footer">
+                Made with love, just for you.
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <!-- ============================= -->
+    <!-- 2. MAIN BIRTHDAY WEBSITE    -->
+    <!-- ============================= -->
+
+    <div id="birthday-site" class="birthday-site hidden">
+
+        <!-- HERO SECTION -->
+
+        <section class="hero-section" id="home">
+
+            <div class="hero-decoration decoration-left">✿</div>
+            <div class="hero-decoration decoration-right">❀</div>
+
+            <div class="hero-content">
+
+                <p class="eyebrow">NOVEMBER 19 · A DAY FOR YOU</p>
+
+                <div class="hero-flower">
+                    🌷
+                </div>
+
+                <h1>
+                    Happy Birthday,<br>
+                    <span>My Bebe</span>
+                </h1>
+
+                <p class="hero-message">
+                    Today, the world celebrates another year of you.
+                    And I get to celebrate the fact that you're part
+                    of my life.
+                </p>
+
+                <div class="hero-heart">♡</div>
+
+                <a href="#memories" class="scroll-button">
+                    A little look at us ↓
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============================= -->
+        <!-- 3. OUR PHOTOS                -->
+        <!-- ============================= -->
+
+        <section class="memories-section" id="memories">
+
+            <div class="section-heading">
+
+                <p class="eyebrow">LITTLE PIECES OF US</p>
+
+                <h2>Moments I keep<br><span>close to my heart</span></h2>
+
+                <p class="section-description">
+                    A few memories, a few pictures, and one person
+                    I never get tired of looking at.
+                </p>
+
+            </div>
+
+            <div class="photo-gallery">
+
+                <!-- PHOTO 1 -->
+                <figure class="photo-card photo-card-1">
+                    <img src="assets/photo1.jpg" alt="A favorite memory of us" loading="lazy">
+                    <figcaption>A little piece of us ♡</figcaption>
+                </figure>
+
+                <!-- PHOTO 2 -->
+                <figure class="photo-card photo-card-2">
+                    <img src="assets/photo2.jpg" alt="A beautiful memory" loading="lazy">
+                    <figcaption>My favorite person</figcaption>
+                </figure>
+
+                <!-- PHOTO 3 -->
+                <figure class="photo-card photo-card-3">
+                    <img src="assets/photo3.jpg" alt="One of our memories" loading="lazy">
+                    <figcaption>Always you</figcaption>
+                </figure>
+
+                <!-- PHOTO 4 -->
+                <figure class="photo-card photo-card-4">
+                    <img src="assets/photo4.jpg" alt="A moment worth keeping" loading="lazy">
+                    <figcaption>Worth remembering</figcaption>
+                </figure>
+
+                <!-- PHOTO 5 -->
+                <figure class="photo-card photo-card-5">
+                    <img src="assets/photo5.jpg" alt="A memory I love" loading="lazy">
+                    <figcaption>My happy place</figcaption>
+                </figure>
+
+                <!-- PHOTO 6 -->
+                <figure class="photo-card photo-card-6">
+                    <img src="assets/photo6.jpg" alt="One more memory together" loading="lazy">
+                    <figcaption>My favorite view</figcaption>
+                </figure>
+
+                <!-- PHOTO 7 -->
+                <figure class="photo-card photo-card-7">
+                    <img src="assets/photo7.jpg" alt="A special memory" loading="lazy">
+                    <figcaption>And so much more ♡</figcaption>
+                </figure>
+
+            </div>
+
+            <div class="memories-ending">
+                <p>
+                    If I could keep every moment with you,
+                    I would. But for now, these will do. ♡
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- ============================= -->
+        <!-- 4. MUSIC                    -->
+        <!-- ============================= -->
+
+        <section class="music-section" id="music-section">
+
+            <div class="music-content">
+
+                <p class="eyebrow">A SONG FOR YOU</p>
+
+                <h2>Because some songs<br><span>feel like you.</span></h2>
+
+                <div class="music-player">
+
+                    <div class="music-artwork">
+                        <span>♡</span>
+                    </div>
+
+                    <div class="music-details">
+
+                        <p class="music-label">NOW PLAYING</p>
+
+                        <h3>Heaven</h3>
+
+                        <p>Orange & Lemons</p>
+
+                    </div>
+
+                    <button
+                        class="music-toggle"
+                        id="music-toggle"
+                        aria-label="Play music"
+                    >
+                        ▶
+                    </button>
+
+                </div>
+
+                <p class="music-note">
+                    A little song for the person who makes my world better.
+                </p>
+
+                <audio id="birthday-music" preload="none">
+                    <source src="assets/heaven.mp3" type="audio/mpeg">
+                </audio>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============================= -->
+        <!-- 5. YOUR LETTER               -->
+        <!-- ============================= -->
+
+        <section class="letter-section" id="letter-section">
+
+            <div class="letter-heading">
+
+                <p class="eyebrow">WORDS FROM MY HEART</p>
+
+                <h2>A letter<br><span>for my bebe</span></h2>
+
+            </div>
+
+            <article class="love-letter">
+
+                <div class="letter-top-decoration">
+                    ♡
+                </div>
+
+                <p class="letter-greeting">
+                    To my love,
+                </p>
+
+                <p>
+                    Habang ang buong mundo ay kinikilig sa Jeolee,
+                    andito akong baliw na baliw pa rin sa'yo.
+                    Happy Birthday, own version of Gehlee, Aimee,
+                    Jayjay, Naksu, Avenger, Wizard, Assassin, Pirate,
+                    Sam, sige, lahat na.
+                </p>
+
+                <p>
+                    Usual 'Happy Birthday' greetings are old-fashioned.
+                    Instead of greeting you with that traditional phrase,
+                    I'd rather highlight my gratitude for your birth.
+                    I know that you are often misappreciated or unnoticed,
+                    so I wanna say thank you. Thank you for being born,
+                    my love. Thank you for coming into my life.
+                    Thank you for making me happy. Thank you for making
+                    me feel loved. Thank you for supporting me.
+                    Thank you for everything, my love.
+                </p>
+
+                <p>
+                    Aside from wishing to meet you sooner, I wish you
+                    good health and peace of mind, and I wish for us
+                    to be in each other's arms for eternity.
+                    And I wish for everything to work out in your favor.
+                </p>
+
+                <p class="letter-closing">
+                    Thank you, bebe!! I love you!!! MWAAA.
+                </p>
+
+                <div class="letter-signature">
+                    <span>♡</span>
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!-- ============================= -->
+        <!-- 6. FINAL MESSAGE             -->
+        <!-- ============================= -->
+
+        <section class="final-section">
+
+            <div class="final-flower">
+                💐
+            </div>
+
+            <p class="eyebrow">UNTIL THE DAY WE'RE TOGETHER</p>
+
+            <h2>Distance is temporary.<br><span>Us, hopefully forever.</span></h2>
+
+            <p class="final-message">
+                Someday, I won't have to send you birthday wishes
+                through a screen. Someday, I'll be right there,
+                holding you, celebrating you, and reminding you
+                how loved you are.
+            </p>
+
+            <div class="final-heart">♡</div>
+
+            <p class="final-love">
+                I love you, bebe.
+            </p>
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <footer class="website-footer">
+
+            <p>Made with love, just for you ♡</p>
+
+            <p class="footer-small">
+                A little piece of my heart, wherever you are.
+            </p>
+
+        </footer>
+
     </div>
-  </section>
 
-  <!-- PHOTOS -->
 
-  <section class="gallery">
-    <p class="small-title">A few of my favorite moments</p>
-    <h2 class="section-title">You & Me ♡</h2>
-
-    <div class="photo-grid">
-
-      <!-- REPLACE THESE WITH OUR PHOTOS LATER -->
-
-      <div class="photo-placeholder">🌷</div>
-      <div class="photo-placeholder">💗</div>
-      <div class="photo-placeholder">🌸</div>
-      <div class="photo-placeholder">♡</div>
-
-    </div>
-
-    <p>Every moment with you is one I'll always treasure.</p>
-  </section>
-
-  <!-- LETTER -->
-
-  <section class="letter-section">
-    <p class="small-title">From my heart</p>
-
-    <div class="letter">
-      <h2>To My Baby ♡</h2>
-
-      <p>
-        Happy birthday, my love.
-      </p>
-
-      <p>
-        Another year of your life, and I hope this year brings
-        you happiness, peace, beautiful opportunities, and all
-        the love that you deserve.
-      </p>
-
-      <p>
-        Even though distance keeps us apart, please never forget
-        that you have someone here who loves you, supports you,
-        believes in you, and is always proud of you.
-      </p>
-
-      <p>
-        I wish I could be beside you today, hug you tightly,
-        and celebrate this special day with you. But until that
-        day comes, I hope this little gift reminds you that
-        you're loved, even from miles away.
-      </p>
-
-      <p>
-        Thank you for being you. Thank you for being part of
-        my life. And thank you for giving me so many reasons
-        to smile.
-      </p>
-
-      <p>
-        I love you more than words could ever explain.
-        Happy birthday, my baby. ♡
-      </p>
-
-      <p class="signature">
-        Always yours,<br>
-        Your love ♡
-      </p>
-    </div>
-  </section>
-
-  <!-- ENDING -->
-
-  <section class="hero">
-    <div class="flowers">💐</div>
-
-    <h1>Until we're together ♡</h1>
-
-    <p>
-      One day, there won't be screens between us,
-      just you and me.
-    </p>
-
-    <div class="flowers">I love you. ❤️</div>
-  </section>
-
-  <footer>
-    Made with love, just for you ♡
-  </footer>
-
-</div>
-
-<script>
-function openGift() {
-  document.getElementById("welcome").style.display = "none";
-  document.getElementById("birthday").style.display = "block";
-
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
-
-  createPetals();
-}
-
-let playing = false;
-
-function toggleMusic() {
-  const music = document.getElementById("music");
-  const button = document.querySelector(".music-button");
-
-  if (!playing) {
-    music.play();
-    button.innerHTML = "❚❚ Pause Music";
-    playing = true;
-  } else {
-    music.pause();
-    button.innerHTML = "▶ Play Music";
-    playing = false;
-  }
-}
-
-function createPetals() {
-  const flowers = ["🌸", "🌷", "💗", "🌺"];
-
-  setInterval(() => {
-    const petal = document.createElement("div");
-    petal.className = "petal";
-    petal.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
-
-    petal.style.left = Math.random() * 100 + "vw";
-    petal.style.fontSize = (15 + Math.random() * 20) + "px";
-    petal.style.animationDuration = (5 + Math.random() * 5) + "s";
-
-    document.body.appendChild(petal);
-
-    setTimeout(() => {
-      petal.remove();
-    }, 10000);
-
-  }, 700);
-}
-</script>
+    <!-- Our JavaScript -->
+    <script src="script.js"></script>
 
 </body>
 </html>
